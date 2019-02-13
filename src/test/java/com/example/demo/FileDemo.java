@@ -11,7 +11,7 @@ public class FileDemo {
 
 
     public static void main(String[] args) {
-
+/*
         final String FINAL = "0";
 
         String firstLevel = "1";
@@ -38,15 +38,17 @@ public class FileDemo {
             }
         } while (!FINAL.equals(choiceId));
 
-        System.out.println("COMPRA EL DLC CTM!!!!!");
+        System.out.println("COMPRA EL DLC CTM!!!!!");*/
 
-       // writeLine("leva culiao");
+        //writeLine("leva culiao");
+
+        readAscII();
     }
 
     private static Level getLine(String idLevel) {
 
         Level level = null;
-        try (Scanner scanner = new Scanner(new File("E:\\Documents\\asdasd2.txt"))) {
+        try (Scanner scanner = new Scanner(Thread.currentThread().getContextClassLoader().getResourceAsStream("asdasd2.txt"))) {
 
             while (scanner.hasNextLine()) {
                 String line = scanner.nextLine();
@@ -67,7 +69,7 @@ public class FileDemo {
                 if (level.getId().equals(idLevel))
                     break;
             }
-        } catch (FileNotFoundException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return level;
@@ -80,6 +82,19 @@ public class FileDemo {
             bw.newLine();
         } catch (IOException e) {
             e.printStackTrace();
+        }
+
+
+    }
+
+    private static void readAscII() {
+
+        try (Scanner scanner = new Scanner(Thread.currentThread().getContextClassLoader().getResourceAsStream("asd123.txt")).useDelimiter("\\+nextline\\+")) {
+            int count = 1;
+            while (scanner.hasNext()) {
+                System.out.println(count++ + " " + scanner.next());
+            }
+
         }
 
 

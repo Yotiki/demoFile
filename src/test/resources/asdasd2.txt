@@ -1,0 +1,7 @@
+1;etapa 1;muerete ctm,2;chao,2;hola,3;sol,4
+2;etapa 2;ganaste,4;a,7
+3;etapa 3;agachate,6;b,6
+4;etapa 4;agachate,2;c,1
+5;etapa 5;agac,5;d,2
+6;etapa 6;chate,3;e,1
+7;etapa 7;salta,2;final,0
