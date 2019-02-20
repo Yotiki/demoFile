@@ -2,16 +2,13 @@ package com.example.demo;
 
 
 import java.io.*;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 public class FileDemo {
 
 
     public static void main(String[] args) {
-/*
+
         final String FINAL = "0";
 
         String firstLevel = "1";
@@ -23,7 +20,11 @@ public class FileDemo {
             boolean validOption = false;
             level = getLine(null == level ? firstLevel : choiceId);
             System.out.println(level);
-            System.out.println(Arrays.toString(level.getNextLevel().toArray()));
+            System.out.println(readAscII(level.getId()).getTextSmile());
+            //System.out.println(Arrays.toString(level.getNextLevel().toArray()));
+            for (Option nextLevel : level.getNextLevel()) {
+                System.out.println(nextLevel.getText());
+            }
             Scanner scannerChoice = new Scanner(System.in);
             choiceKeyboard = scannerChoice.nextLine();
             for (Option option : level.getNextLevel()) {
@@ -38,11 +39,12 @@ public class FileDemo {
             }
         } while (!FINAL.equals(choiceId));
 
-        System.out.println("COMPRA EL DLC CTM!!!!!");*/
+        System.out.println("COMPRA EL DLC CTM!!!!!");
 
         //writeLine("leva culiao");
 
-        readAscII();
+        //readAscII();
+        //Base64.getEncoder().
     }
 
     private static Level getLine(String idLevel) {
@@ -87,13 +89,27 @@ public class FileDemo {
 
     }
 
-    private static void readAscII() {
+    private static Smile readAscII(String id) {
 
         try (Scanner scanner = new Scanner(Thread.currentThread().getContextClassLoader().getResourceAsStream("asd123.txt")).useDelimiter("\\+nextline\\+")) {
             int count = 1;
             while (scanner.hasNext()) {
-                System.out.println(count++ + " " + scanner.next());
+
+                String values[] = scanner.next().split(";");
+
+                Smile smile = new Smile();
+                smile.setId(values[0].trim());
+                smile.setTextSmile(values[1].trim());
+
+                /*System.out.println("El id del smile es: " + smile.getId());
+                System.out.println("Smile: ");
+                System.out.println(smile.getTextSmile());*/
+                if (id.equals(smile.getId())){
+                    return smile;
+                }
+                //System.out.println(count++ + " " + scanner.next().replace("\\n", System.getProperty("line.separator")));
             }
+            return null;
 
         }
 
