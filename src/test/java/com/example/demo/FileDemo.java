@@ -19,12 +19,15 @@ public class FileDemo {
         do {
             boolean validOption = false;
             level = getLine(null == level ? firstLevel : choiceId);
+            final String ESC = "\033[";
+            System.out.print(ESC + "2J");
+            System.out.flush();
             System.out.println(level);
             System.out.println(readAscII(level.getId()).getTextSmile());
-            //System.out.println(Arrays.toString(level.getNextLevel().toArray()));
+            System.out.println(Arrays.toString(level.getNextLevel().toArray()));/*
             for (Option nextLevel : level.getNextLevel()) {
                 System.out.println(nextLevel.getText());
-            }
+            }*/
             Scanner scannerChoice = new Scanner(System.in);
             choiceKeyboard = scannerChoice.nextLine();
             for (Option option : level.getNextLevel()) {
